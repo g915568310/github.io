@@ -1,11 +1,30 @@
-<html>
-<head><title>Telegram</title></head>
-<body>
-    <form method="GET" action="https://api.telegram.org/bot5073063681:AAFHhobFdR7oU5Npa5HlzKVAsH0Ut8Eph3o/sendMessage">
-        <input type="hidden" name="chat_id" value="@testadminch">
-        <input type="hidden" name="parse_mod" value="markdown">
-        <textarea name="text"></textarea>
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
+<?xml version="1.0"?>
+<hivemq xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    ...
+    <security>
+
+        <!-- Disables the validation of UTF-8 PUBLISH payloads -->
+        <payload-format-validation>
+            <enabled>false</enabled>
+        </payload-format-validation>
+
+        <!-- Enables the UTF-8 validation of topic names and client ids -->
+        <utf8-validation>
+            <enabled>true</enabled>
+        </utf8-validation>
+
+        <!-- Allows the use of empty client ids -->
+        <allow-empty-client-id>
+            <enabled>true</enabled>
+        </allow-empty-client-id>
+
+        <!-- Allows the client to request the problem information -->
+        <allow-request-problem-information>
+            <enabled>true</enabled>
+        </allow-request-problem-information>
+
+    </security>
+    ...
+
+</hivemq>
