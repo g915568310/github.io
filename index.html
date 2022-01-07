@@ -3,7 +3,7 @@
 
 <%sub scroll_iframe(id,url,title,top,left,width,height)%>
 <div style=" margin-top:5px; border:1px dotted #CC4400;">
-<a href="<%=url%>" target="_blank"><%=title%></a><br/>
+<a href="<%=url%>" target="http://www.tongxinmao.com/txm/webmqtt.php"><%=title%></a><br/>
 <div style="width:<%=width%>px; height:<%=height%>px">
 <iframe id="ifr_<%=id%>" src="iframe.asp?u=<%=url%>&w=<%=left+width%>&h=<%=top+height%>" frameborder="0" scrolling="no" onload="ifr_<%=id%>.scrollTo(<%=left%>,<%=top%>)" width="<%=width%>" height="<%=height%>"></iframe></div></div>
 <%end sub%>
