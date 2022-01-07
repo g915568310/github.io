@@ -1,12 +1,25 @@
 <html>
 <titie></titie>
 
-<%sub scroll_iframe(id,url,title,top,left,width,height)%>
-<div style=" margin-top:5px; border:1px dotted #CC4400;">
-<a href="<%=url%>" target="http://www.tongxinmao.com/txm/webmqtt.php"><%=title%></a><br/>
-<div style="width:<%=width%>px; height:<%=height%>px">
-<iframe id="ifr_<%=id%>" src="iframe.asp?u=<%=url%>&w=<%=left+width%>&h=<%=top+height%>" frameborder="0" scrolling="no" onload="ifr_<%=id%>.scrollTo(<%=left%>,<%=top%>)" width="<%=width%>" height="<%=height%>"></iframe></div></div>
-<%end sub%>
+<body style="margin:0px;" >
+<%u=request.querystring("u")
+w=request.querystring("w")
+h=request.querystring("h")%>
+<div width="<%=w%>" height="<%=h%>">
+<div id="loading"><img src="loading.gif" /></div>
+<div id="ifr_div" style="display:none;border:1px solid #CC4400;" >
+<iframe id="ifr" src="<%=u%>" frameborder="0" scrolling="no" width="995" height="<%=h%>" ></iframe> 
+</div>
+</div>
+<script>
+function init(){
+  loading.style.display="none";
+  ifr_div.style.display="block";
+}
+window.onload=init;
+</script>
+</body>
+
 <head>
 </head>
 <body>
