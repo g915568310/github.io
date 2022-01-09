@@ -1,124 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title></title>
-<style type="text/css">
-.btn-switch {
-cursor: pointer;
-width: 52px;
-height: 31px;
-position: relative;
-border: 1px solid #dfdfdf;
-background-color: #fdfdfd;
-box-shadow: #dfdfdf 0 0 0 0 inset;
-border-radius: 20px;
-background-clip: http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on;
-display: inline-block;
--webkit-appearance: none;
-user-select: none;
-outline: none !important;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
-.btn-switch.large {
-width: 70px;
-height: 30px;
-border-radius: 30px;
+.switch input {
+    display:none;
 }
 
-.btn-switch.large:before {
-content: '';
-width: 28px;
-height: 28px;
-border-radius: 30px;
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.btn-switch.large:after {
-content: '关闭';
-color: #999;
-left: 30px;
-position: absolute;
-line-height: 30px;
-font-size: 14px;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.btn-switch.large:checked:after {
-content: '开启';
-color: #fff;
-left: 10px;
-position: absolute;
-line-height: 30px;
-font-size: 14px;
+input:checked + .slider {
+  background-color: #2196F3;
 }
 
-.btn-switch.large:checked:before {
-left: 40px;
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
 }
 
-.btn-switch:before {
-content: '';
-width: 29px;
-height: 29px;
-position: absolute;
-top: 0px;
-left: 0;
-border-radius: 20px;
-background-color: #fff;
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
-.btn-switch:checked {
-border-color: #64bd63;
-box-shadow: #64bd63 0 0 0 16px inset;
-background-color: #64bd63;
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
 }
 
-.btn-switch:checked:before {
-left: 21px;
+.slider.round:before {
+  border-radius: 50%;
 }
-
-.btn-switch.btn-switch-animbg {
-transition: background-color ease 0.4s;
-}
-
-.btn-switch.btn-switch-animbg:before {
-transition: left 0.3s;
-}
-
-.btn-switch.btn-switch-animbg:checked {
-box-shadow: #dfdfdf 0 0 0 0 inset;
-background-color: #64bd63;
-transition: border-color 0.4s, background-color ease 0.4s;
-}
-
-.btn-switch.btn-switch-animbg:checked:before {
-transition: left 0.3s;
-}
-
-.btn-switch.btn-switch-anim {
-transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
-}
-
-.btn-switch.btn-switch-anim:before {
-transition: left 0.3s;
-}
-
-.btn-switch.btn-switch-anim:checked {
-box-shadow: #64bd63 0 0 0 16px inset;
-background-color: #64bd63;
-transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
-}
-
-.btn-switch.btn-switch-anim:checked:before {
-transition: left 0.3s;
-}
-
-input[type=checkbox]:checked::before {
-font: normal normal normal 14px/2 FontAwesome;
-}
-</style>
+    </style>
 </head>
 <body>
-<label><input class="btn-switch large" type="checkbox" value="" checked=""></label>
+    <h2>开关切换</h2>
+
+<label class="switch">
+  <input type="checkbox">
+  <div class="slider"></div>
+</label>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <div class="slider"></div>
+</label><br><br>
+
+<label class="switch">
+  <input type="checkbox">
+  <div class="slider round"></div>
+</label>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <div class="slider round"></div>
+</label>
 </body>
+
 </html>
