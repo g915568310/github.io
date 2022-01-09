@@ -1,91 +1,43 @@
+￼
+￼
+￼
+登录
+￼
+￼￼
+f清风q
+关注
+HTML/CSS 自定义开关按钮控件(switch)样式 原创
+2016-07-15 10:57:38
+￼ 25点赞
+￼
+f清风q ￼
+
+码龄8年
+
+关注
+今天这篇文章给大家带来的是在移动端很常见的开关按钮控件。样式主要是通过CSS来定制完成，上一篇博客讲的是自定义滑动条的样式，同样是自定义样式，上一篇是直接通过CSS对 input[type="range"]进行样式改造，而今天这一篇实现思路是上一次提到过的另一种方案，将input[type="checkbox"] 控件隐藏，通过其他标签来完成样式的定制。这样做的好处就在于更加的灵活，￼这是我们今天所要达到的效果。下面就让我们一起来看看怎么实现吧。
+
+
+
+1.编写HTML代码
+HTML的代码很简单，下面直接贴出来，再做一个简单的介绍。
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input {
-    display:none;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-    </style>
-</head>
-<body>
-    <h2>开关切换</h2>
-
-<label class="switch">
-  <input type="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on">
-  <div class="slider"></div>
-</label>
-
-<label class="switch">
-  <input type="checkbox" checked>
-  <div class="slider"></div>
-</label><br><br>
-
-<label class="switch">
-  <input type="checkbox">
-  <div class="slider round"></div>
-</label>
-
-<label class="switch">
-  <input type="checkbox" checked>
-  <div class="slider round"></div>
-</label>
-</body>
-
+<html>
+	<head>
+		<title>demo</title>
+                <script type="text/javascript" src="lib/jquery.js"></script>
+                <script type="text/javascript"src="js/on_off_switch.js"></script>
+                <link rel="stylesheet" href="css/on_off_switch.css" type="text/css">
+	</head>
+ 
+	<body>
+		<div class="testswitch">
+			<input class="testswitch-checkbox" id="onoffswitch" type="checkbox">
+			<label class="testswitch-label" for="onoffswitch">
+				<span class="testswitch-inner" data-on="ON" data-off="OFF"></span>
+				<span class="testswitch-switch"></span>
+			</label>
+		</div>
+	</body>
 </html>
