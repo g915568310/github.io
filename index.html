@@ -1,16 +1,55 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>e易行</title>
-	</head>
-	 
-	
-	<body <SELECT name="select" οnchange="window.open(this.options[this.selectedIndex].value,target='_self')">
-<OPTION value='file1.htm' selected>网址1</OPTION>
-<OPTION value='file2.htm'>网址2</OPTION>
-<OPTION value='file3.htm'>网址3</OPTION>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/weixin_34228617/article/details/86130280"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+</head>
+
+1.打开新页面
+
+<select onChange="window.open(this.value)"> 
+<option value="" selected>请选择 
+<option value="http://www.baidu.com">百度 
+<option value="http://www.sina.com">新浪 
+</select><br>
+
+2.打开新页面
+<select name="select" onChange="linkChange(this);" > 
+<option value="http://www.baidu.com" selected>百度 
+<option value="http://www.sina.com">新浪 
+</select>
+
+<h2> 3.当前页面跳转 this one ok</h2>
+
+<select id="stype" onChange="location.href=this.options[this.selectedIndex].getAttribute('data-href')">
+    <option value="0" data-href="http://www.163.com">所有服务</option>
+	<option value="1" data-href="http://www.163.com">1</option>
+    <option value="2" data-href="http://www.163.com">2</option>
+    <option value="4" data-href="http://www.163.com">4</option>
+</select>
+
+
+<h5> this one ok</h5>
+
+<SELECT name="select" onChange="window.open(this.options[this.selectedIndex].value,target='_blank')">
+	<OPTION value='http://www.sina.com' selected>网址1</OPTION>
+	<OPTION value='http://www.sina.com'>网址2</OPTION>
+	<OPTION value='http://www.sina.com'>网址3</OPTION>
 </SELECT>
-	</body>
+
+
+
+<script language="javascript">
+function linkChange(selectObj)
+{
+	var value = selectObj.options[selectObj.selectedIndex].value;
+	if (value != "")
+	{
+		window.open(value, "", "")
+	}
+}
+</script>
 </html>
 
