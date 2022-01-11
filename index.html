@@ -1,43 +1,152 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-<style>
-a{/* 统一设置所有样式 */
-	font-family: Arial;
-	font-size: 4em;
-	text-align:center;
-	margin:12px;
-}
-a:link, a:visited{/* 超链接正常状态、被访问过的样式 */
-	color: #A62020;
-	padding:30px 60px 30px 60px;
-	background-color: #ecd8db;
-	text-decoration: none;
-	border-top: 1px solid #EEEEEE;/* 边框实现阴影效果 */
-	border-left: 1px solid #EEEEEE;
-	border-bottom: 1px solid #717171;
-	border-right: 1px solid #717171;
-}
-a:hover{/* 鼠标经过时的超链接 */
-	color:#821818;/* 改变文字颜色 */
-	padding:25px 55px 25px 55px;/* 改变文字位置 */
-	background-color:#e2c4c9;/* 改变背景色 */
-	border-top: 1px solid #717171;/* 边框变换，实现“按下去”的效果 */
-	border-left: 1px solid #717171;
-	border-bottom: 1px solid #EEEEEE;
-	border-right: 1px solid #EEEEEE;
-}
-</style>
-</head>
-<head>
-<iframe frameborder="0" width="100%" height="100" src="https://api.bemfa.com/api/device/v1/status/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002"></iframe>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>百度图片搜索</title>
+    <style>
+        * {padding: 0;margin: 0;list-style: none;}
+        html,body {width: 100%;}
+        #wrap {
+            width: 10rem;
+            height: auto;
+            background-color: #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+        }
+        #wrap .search {
+            width: 10rem;
+            height: 3rem;
+            background-color: #4992c3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 8px #222;
+            position: relative;
+        }
+        #wrap .search input {
+            width: 80%;
+            height: 0.8rem;
+            font-size: 0.4rem;
+            border: 0;
+            outline: none;
+            border-radius: 10px;
+            text-indent: 20px;
+        }
+        #wrap .search i {
+            position:absolute;
+            right: 1.2rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background: url("icons/search.png") center/cover;
+        }
+        #wrap .list {
+            width: 10rem;
+            height: auto;
+            background-color: #fff;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding: 10px;
+        }
+        #wrap .list div {
+            width: 48%;
+            margin: 1%;
+            float: left;
+            height: auto;
+        }
+       #wrap .list div img {
+           margin: 0.3rem 0;
+           border: 0;
+           display: block;
+           box-shadow: 0 0 8px #000;
+       }
+    </style>
 </head>
 <body>
-      <a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on">开</a> 
+    <div id="wrap">
+        <div class="search">
+            <input type="text" id="input">
+            <i></i>
+        </div>
+        <div class="list">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <script>
+        var oWrap = document.querySelector("#wrap");
+        var oSearch = document.querySelector(".search");
+        var oList = document.querySelector(".list");
+        var oLeft = document.querySelector(".left");
+        var oRight = document.querySelector(".right");
+        var oInput = document.querySelector("#input");
+        var oI = document.querySelector(".search i");
+        var eleW = document.documentElement || document.body;
+        var wH = eleW.clientHeight;
+        var wW = eleW.clientWidth;
+        var sH = oSearch.offsetHeight;
+        oWrap.style.height = wH + "px";
+        oList.style.height = wH-sH + "px";
+        var word = '';
 
-       <a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off">关</a>
-      
+        window.document.documentElement.style.fontSize = wW/10 + "px";
+
+        oInput.onkeypress = function(){
+            if (event.keyCode == 13){
+                search();
+            }
+        }
+        oI.onclick = function(){
+            search();
+        }
+        //进行搜索
+        function search(){
+            word = oInput.value;
+            if(word&&word.length>0){
+                oLeft.innerHTML = '';
+                oRight.innerHTML = '';
+                oInput.value = '';
+                createSctipt();
+            }
+        }
+        //jsonp
+        function createSctipt(){
+            var oScript = document.createElement("script");
+            oScript.src = "http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&pn=0&rn=30&ie='utf8'&word="+word+"&callback=getEn";
+            document.body.appendChild(oScript);
+        }
+
+        function getEn(res){
+            var imgUrl = res.data;
+            for (var i = 0; i < imgUrl.length-1; i++) {
+                var oImg = document.createElement("img");
+                oImg.src = imgUrl[i].thumbURL;
+                zoom(oImg);
+            }
+        }
+        //调整图片尺寸
+        function zoom(img){
+            var lW = oLeft.offsetWidth;
+            var iW = img.offsetWidth;
+            var iH = img.offsetHeight;
+            var leftH = oLeft.offsetHeight;
+            var rightH = oRight.offsetHeight;
+            var pH = iH/(iW/lW);
+            img.style.width = lW+"px";
+            img.style.height = pH+"px";
+            if(leftH<=rightH){
+                leftH += pH;
+                oLeft.appendChild(img);
+            }else{
+                rightH += pH;
+                oRight.appendChild(img);
+            }
+        }
+    </script>
 </body>
-
 </html>
