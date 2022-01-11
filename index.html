@@ -30,8 +30,130 @@ a:hover{/* 鼠标经过时的超链接 */
 </style>
 </head>
 <body>
-      <a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on"><input type=button value=刷新 οnclick="location.assign(location)"></a> wwww
+      <a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on">开</a> wwww
        <a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off">关</a>
        
 </body>
 </html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml" > 
+
+<head><meta name="accelerate"> 
+
+    <title>让超链接显示提示信息</title> 
+
+    <script>  
+
+if (!document.layers&&!document.all)  
+
+event="test"  
+
+function showtip2(current,e,text){  
+
+
+
+if (document.all&&document.readyState=="complete"){  
+
+document.all.tooltip2.innerHTML="<marquee style='border:1px solid black'>"+text+"</marquee>"  
+
+document.all.tooltip2.style.pixelLeft=event.clientX+document.body.scrollLeft+10  
+
+document.all.tooltip2.style.pixelTop=event.clientY+document.body.scrollTop+10  
+
+document.all.tooltip2.style.visibility="visible"  
+
+}  
+
+
+
+else if (document.layers){  
+
+document.tooltip2.document.nstip.document.write("<b>"+text+"</b>")  
+
+document.tooltip2.document.nstip.document.close()  
+
+document.tooltip2.document.nstip.left=0  
+
+currentscroll=setInterval("scrolltip()",100)  
+
+document.tooltip2.left=e.pageX+10  
+
+document.tooltip2.top=e.pageY+10  
+
+document.tooltip2.visibility="show"  
+
+}  
+
+}  
+
+function hidetip2(){  
+
+if (document.all)  
+
+document.all.tooltip2.style.visibility="hidden"  
+
+else if (document.layers){  
+
+clearInterval(currentscroll)  
+
+document.tooltip2.visibility="hidden"  
+
+}  
+
+}  
+
+
+
+function scrolltip(){  
+
+if (document.tooltip2.document.nstip.left>=-document.tooltip2.document.nstip.document.width)  
+
+document.tooltip2.document.nstip.left-=5  
+
+else  
+
+document.tooltip2.document.nstip.left=150  
+
+}  
+
+
+
+</script>  
+
+
+
+</head> 
+
+<body> 
+
+<p>显示静态文本信息</p> 
+
+phpStudy 
+
+
+
+<p>显示动态文本信息</p> 
+
+<div id="tooltip2"  
+
+style="position:absolute;visibility:hidden;clip:rect(0 150 50 0);width:150px;background-color:lightyellow"> 
+
+<layer name="nstip" width="1000px" bgColor="lightyellow"> 
+
+</layer>  
+
+</div> 
+
+phpStudy 
+
+
+
+
+
+</body> 
+
+</html> 
+
+
+
