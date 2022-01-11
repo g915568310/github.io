@@ -1,45 +1,38 @@
-<!DOCTYPE html>
 <html>
-<script src="wz.js"></script>
-<script>
-
-document.write("<a href='"+wz[1]+"'>标题一</a>")
-
-</script>
-   <body>
-    <style type="text/css">
-
-.css{
-
-width: 140px;
-
-height: 60px;
-
-display: block;
-
-color: #fff;
-
-background: #ff0000;
-
-font-size: 40px;
-
-border-radius: 25px;
-
-text-decoration: none;
-
-}
-
-<style>
-.div-inline{ display:inline} 
-</style>
 <head>
+<title>按钮超链接</title>
+<style>
+a{/* 统一设置所有样式 */
+	font-family: Arial;
+	font-size: .8em;
+	text-align:center;
+	margin:3px;
+}
+a:link, a:visited{/* 超链接正常状态、被访问过的样式 */
+	color: #A62020;
+	padding:4px 10px 4px 10px;
+	background-color: #ecd8db;
+	text-decoration: none;
+	border-top: 1px solid #EEEEEE;/* 边框实现阴影效果 */
+	border-left: 1px solid #EEEEEE;
+	border-bottom: 1px solid #717171;
+	border-right: 1px solid #717171;
+}
+a:hover{/* 鼠标经过时的超链接 */
+	color:#821818;/* 改变文字颜色 */
+	padding:5px 8px 3px 12px;/* 改变文字位置 */
+	background-color:#e2c4c9;/* 改变背景色 */
+	border-top: 1px solid #717171;/* 边框变换，实现“按下去”的效果 */
+	border-left: 1px solid #717171;
+	border-bottom: 1px solid #EEEEEE;
+	border-right: 1px solid #EEEEEE;
+}
+</style>
+</head>
 <body>
-<a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on" target="_blank" class="css">&nbsp&nbsp打&nbsp&nbsp开</a>
-<a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off" target="_blank" class="css">&nbsp&nbsp打&nbsp&nbsp开</a> 
- </body>
-<script>
-
-document.write("<a href='"+wz[1]+"'>标题一</a>")
-
-</script>
+       <a href="#">按钮</a> 
+       <a href="#">按钮1</a>
+       <a href="#">button</a> 
+       <a href="#">button2</a> 
+</body>
 </html>
