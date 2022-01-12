@@ -3,20 +3,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="author" content="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=/"on />
 <title>脚本之家</title>
-<script type="text/javascript" src="mytest/jQuery/jquery-1.8.3.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("#bt").click(function(){
-    $.get("mytest/demo/antzone.txt",function(data,status){
-      alert("Data:"+data+"\nStatus:"+status);
-    })
-  })
-})
-</script>
+variable=new ActiveXObject("Microsoft.XMLHTTP
 </head>
 <body>
-<input type="button" value="查看效果" id="bt"/>
+xmlhttp.open("GET","demo_get.asp",true);
+xmlhttp.send();
 </body>
 </html>
