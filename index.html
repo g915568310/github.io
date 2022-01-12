@@ -1,43 +1,22 @@
+
+<!DOCTYPE html>
 <html>
 <head>
-
-<style>
-a{/* 统一设置所有样式 */
-	font-family: Arial;
-	font-size: 4em;
-	text-align:center;
-	margin:12px;
-}
-a:link, a:visited{/* 超链接正常状态、被访问过的样式 */
-	color: #A62020;
-	padding:30px 60px 30px 60px;
-	background-color: #ecd8db;
-	text-decoration: none;
-	border-top: 1px solid #EEEEEE;/* 边框实现阴影效果 */
-	border-left: 1px solid #EEEEEE;
-	border-bottom: 1px solid #717171;
-	border-right: 1px solid #717171;
-}
-a:hover{/* 鼠标经过时的超链接 */
-	color:#821818;/* 改变文字颜色 */
-	padding:25px 55px 25px 55px;/* 改变文字位置 */
-	background-color:#e2c4c9;/* 改变背景色 */
-	border-top: 1px solid #717171;/* 边框变换，实现“按下去”的效果 */
-	border-left: 1px solid #717171;
-	border-bottom: 1px solid #EEEEEE;
-	border-right: 1px solid #EEEEEE;
-}
-</style>
-</head>
-<head>
-<iframe frameborder="0" width="100%" height="100" src="https://api.bemfa.com/api/device/v1/status/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002"></iframe>
-
+<meta charset="utf-8">
+<meta name="author" content="https://www.jb51.net/" />
+<title>脚本之家</title>
+<script type="text/javascript" src="mytest/jQuery/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#bt").click(function(){
+    $.get("mytest/demo/antzone.txt",function(data,status){
+      alert("Data:"+data+"\nStatus:"+status);
+    })
+  })
+})
+</script>
 </head>
 <body>
-      <a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on">开</a> 
-
-       <a href="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off">关</a>
-      
+<input type="button" value="查看效果" id="bt"/>
 </body>
-
-</html>  
+</html>
