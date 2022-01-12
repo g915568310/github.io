@@ -5,18 +5,13 @@
 <meta charset="utf-8">
 <meta name="author" content="https://www.jb51.net/" />
 <title>脚本之家</title>
-<script type="text/javascript" src="mytest/jQuery/jquery-1.8.3.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("#bt").click(function(){
-    $.get("mytest/demo/antzone.txt",function(data,status){
-      alert("Data:"+data+"\nStatus:"+status);
-    })
-  })
-})
-</script>
+<form action="ajax.php" method="get">
+Name: <input type="text" name="name" />
+Age: <input type="text" name="age" />
+<input type="submit" />
+</form>
+<div class="get">这是ajax的get方法</div>
 </head>
 <body>
-<input type="button" value="查看效果" id="bt"/>
 </body>
 </html>
