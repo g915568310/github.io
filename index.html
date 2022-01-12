@@ -1,17 +1,171 @@
-
 <!DOCTYPE html>
+
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="author" content="https://www.jb51.net/" />
-<title>脚本之家</title>
-<form action="http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on" method="get">
-Name: <input type="text" name="name" />
-Age: <input type="text" name="age" />
-<input type="submit" />
-</form>
-<div class="get">这是ajax的get方法</div>
+
+<meta name="author" content="silvan" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>发送GET请求</title>
+
+<!-- 给select标签添加样式 -->
+
+<style type="text/css">
+
+select {
+
+    width: 160px;
+
+    font-size: 11pt;
+
+}
+
+</style>
+
 </head>
+
 <body>
+
+    <select name="first" id="first" onchange="change(this.value);">
+
+       <option value="0">---请选择---</option>
+
+       <option value="1" >中国</option>
+
+       <option value="2">美国</option>
+
+       <option value="3">日本</option>
+
+    </select>
+
+    <select name="second" id="second"></select>
+
+    <script type="text/javascript">
+
+    // 定义了XMLHttpRequest对象
+
+    var xmlrequest;
+
+    // 完成XMLHttpRequest对象的初始化
+
+    function createXMLHttpRequest(){
+
+       if(window.XMLHttpRequest){
+
+           // DOM 2浏览器
+
+           xmlrequest = new XMLHttpRequest();
+
+       }else if (window.ActiveXObject){
+
+           // IE浏览器
+
+           try{
+
+              xmlrequest = new ActiveXObject("Msxml2.XMLHTTP");
+
+           }catch (e){
+
+              try{
+
+                  xmlrequest = new ActiveXObject("Microsoft.XMLHTTP");
+
+              }catch (e){
+
+              }
+
+           }
+
+       }
+
+    }
+
+    // 事件处理函数，当下拉列表选择改变时，触发该事件
+
+    function change(id){
+
+       // 初始化XMLHttpRequest对象
+
+       createXMLHttpRequest();
+
+       // 设置请求响应的URL
+
+       var uri = "second.jsp?id=" + id;
+
+       // 设置处理响应的回调函数
+
+       xmlrequest.onreadystatechange = processResponse;
+
+       // 打开与服务器响应地址的连接
+
+       xmlrequest.open("GET", uri, true);
+
+       // 发送请求
+
+       xmlrequest.send(null);
+
+    }
+
+    // 定义处理响应的回调函数
+
+    function processResponse(){
+
+       //响应完成且响应正常
+
+       if (xmlrequest.readyState == 4){
+
+           if (xmlrequest.status == 200){
+
+              // 将服务器响应以$符号分隔成字符串数组
+
+              var cityList = xmlrequest.responseText.split("$");
+
+              // 获取用于显示菜单的下拉列表
+
+              var displaySelect = document.getElementById("second");
+
+              // 将目标下拉列表清空
+
+              displaySelect.innerHTML = null;
+
+              // 以字符串数组的每个元素创建option，
+
+              // 并将这些选项添加到下拉列表中
+
+              for (var i = 0 ; i < cityList.length ; i++){
+
+                  // 创建一个<option.../>元素
+
+                  var op = document.createElement("option");
+
+                  op.innerHTML = cityList[i];
+
+                  // 将新的选项添加到列表框的最后
+
+                  displaySelect.appendChild(op);
+
+              }
+
+           }else{
+
+              //页面不正常
+
+              window.alert("您所请求的页面有异常。");
+
+           }
+
+       }
+
+    }
+
+// 指定页面加载完成后指定change(id)函数
+
+document.body.onload = change(document.getElementById("first").value);
+
+</script>
+
 </body>
+
 </html>
