@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script>
-function replaceDoc()
-{
-window.location.replace("https://www.g915568310.net")
+
+​
+<h1>XMLHttpRequest 对象</h1>
+​
+<style>
+p.one {
+  border-style: solid;
+  border-width: 5px;
 }
-</script>
+
+
+</style>
 </head>
 <body>
-<input type="button" value="Replace document"
-onclick="replaceDoc()">
+
+
+
+<p class="one"><p id="demo"></p>
+​</p>
+
+</body>
+<button type="button" onclick="LED()">请求数据</button>
+<button type="button" onclick="LED1()">请求数据</button>
+​
+
+<script>
+function LED() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on", true);
+  xhttp.send();
+}
+</script>
+​
+
+<script>
+function LED1() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off", true);
+  xhttp.send();
+}
+</script>
+ 
 </body>
 </html>
