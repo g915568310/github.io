@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1<font style="font-size:80px"><p id="demo"></p></font></h1>
-<button type="button" onclick="LED()">请求数据</button><button type="button" onclick="LED1()">请求数据</button>
+<p id="demo"></p>
+<button type="button" onclick="LED()">请求数据</button>
 <script>
 function LED() {  
-var xhttp = new XMLHttpRequest();  xhttp.onreadystatechange = function() {   
+var xhttp = new XMLHttpRequest(); 
+ xhttp.onreadystatechange = function() {   
 if (xhttp.readyState == 4 && xhttp.status == 200) 
 console.log(xhttp.responseText);
  }
 
 document.getElementById("demo").innerHTML = this.responseText;    }  }; 
-xhttp.open("post","validate.php"); 
-xhttp.send(null) xhttp.send("username="+name);
+
+
+xhttp.open("get","validate.php"); 
+xhttp.send("username="+name);
 </script>
-
-
-
-
-
-
-<script>function LED1() {  var xhttp = new XMLHttpRequest();  xhttp.onreadystatechange = function() {    if (this.readyState == 4 && this.status == 200) {      document.getElementById("demo").innerHTML = this.responseText;    }  };  xhttp.open("GET", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off", true);  xhttp.send();}</script> </body></html>
+</body>
+</html>
