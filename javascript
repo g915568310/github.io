@@ -18,8 +18,8 @@ $.ajax({
         // 常用
         $.ajax({
             type: "get",
-            url: "",
-            data: {},
+            url: "https://github-opal.vercel.app",
+            data: {"code":"40010","status":"sendok"},
             dataType: "json",
             success: function (data) {
             }
