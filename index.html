@@ -7,14 +7,28 @@
 <button type="button" onclick="LED()">请求数据</button>
 <button type="button" onclick="LED1()">请求数据</button>
 ​           <p id="1demo"></p>
+<body>
 
+<h1>JavaScript 字符串方法</h1>
+
+<p>slice() 提取字符串的某个部分，并在新字符串中返回被提取的部分。</p>
+
+<p id="demo"></p>
+
+<script>
+
+var res = demo.slice(-13,-7);
+document.getElementById("1demo").innerHTML = res;
+</script>
+
+</body>
 ​
 <script>
 function LED() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      document.getElementById("1demo").innerHTML = this.responseText;
     }
   };
   xhttp.open("GET", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on", true);
@@ -26,7 +40,7 @@ function LED1() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      document.getElementById("1demo").innerHTML = this.responseText;
     }
   };
   xhttp.open("GET", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off", true);
