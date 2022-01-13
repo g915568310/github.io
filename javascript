@@ -1,7 +1,7 @@
 $.ajax({
             type: "get",// get或者post
             url: "http://api.bemfa.com/api/device/v1/data/1/push/get",// 请求的url地址
-            data: {uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=oon},//请求的参数
+            data: {uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on},//请求的参数
             dataType: "json",//json写了jq会帮我们转换成数组或者对象 他已经用JSON.parse弄好了 
             timeout: 3000,//3秒后提示错误
             beforeSend: function () {
