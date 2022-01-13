@@ -4,22 +4,37 @@
 ​
 <h1>XMLHttpRequest 对象</h1>
 ​
-<button type="button" onclick="loadDoc()">请求数据</button>
+<button type="button" onclick="LED()">请求数据</button>
+<button type="button" onclick="LED1()">请求数据</button>
 ​
 <p id="demo"></p>
- 
+​
 <script>
-function loadDoc() {
+function LED() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("POST", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on");
+  xhttp.open("GET", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on", true);
   xhttp.send();
 }
 </script>
 ​
+•
+<script>
+function LED1() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off", true);
+  xhttp.send();
+}
+</script>
+ 
 </body>
 </html>
