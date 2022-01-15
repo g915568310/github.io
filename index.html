@@ -2,17 +2,21 @@
 <html>
 <body>
 
-<div id="demo">
-
+<div id="demo"></div>
 <h1>XMLHttpRequest 对象</h1>
 
-<button type="button" onclick="loadDoc('http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on', myFunction2)">更改内容
+<button type="button" onclick="loadDoc('http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=on', myFunction2)">打开
 </button>
-<button type="button" onclick="loadDoc('http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off', myFunction1)">更改内容
-</button>
-</div>
 
-<script>
+<button type="button" onclick="loadDoc('http://api.bemfa.com/api/device/v1/data/1/push/get/?uid=f06cc44ba970497882ebeaabfc782d35&topic=led002&msg=off', myFunction1)">关闭
+</button>
+<script>function myFunction1(xhttp) {  document.getElementById("demo").innerHTML =  xhttp.responseText;}
+
+function myFunction2(xhttp) {  document.getElementById("demo").innerHTML =  xhttp.responseText;}
+
+
+
+
 function loadDoc(url, cFunction) {
   var xhttp;
   xhttp=new XMLHttpRequest();
@@ -24,10 +28,6 @@ function loadDoc(url, cFunction) {
   xhttp.open("GET", url, true);
   xhttp.send();
 }
-function myFunction1(xhttp) {
-  document.getElementById("demo").innerHTML =
-  xhttp.responseText;
-}function myFunction2(xhttp) {  document.getElementById("demo").innerHTML =  xhttp.responseText;}
 </script>
 </body>
 </html>
